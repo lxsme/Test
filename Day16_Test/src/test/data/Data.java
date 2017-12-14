@@ -87,7 +87,13 @@ public class Data {
         List<Element> elements = root.elements();
         for (Element element : elements) {
             if ((element.attribute("用户名").getValue()).equals(person.getName())){
-                element.attribute("成绩").setValue(so);
+
+              String sc =element.attribute("成绩").getValue();
+              int scc = Integer.valueOf(sc);
+              int soo = Integer.valueOf(so);
+              if(scc > soo) {
+                  element.attribute("成绩").setValue(so);
+              }
             }
         }
         OutputFormat outputFormat = OutputFormat.createPrettyPrint();

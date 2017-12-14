@@ -60,50 +60,6 @@ public class Threads {
 
 
 
-//    private static String test(String s,String ins) {
-//
-//        long l = System.currentTimeMillis();
-//
-//        long l1 = System.currentTimeMillis();
-//        long times = l1 - (l + 400);
-//        System.out.println(times+"毫秒");
-//        double num = 0;
-//        if (ins.equals(s)){
-//            System.out.println("正确率100%");
-//        }else{
-//            try {
-//                for (int i = 0; i < s.length(); i++) {
-//                    if (String.valueOf(ins.charAt(i)).equals(String.valueOf(s.charAt(i)))) {
-//                        double j = 100.0/s.length();
-//                        num += j;
-//                    }
-//                }
-//                System.out.println("正确率" + ((int)num) + "%");
-//            } catch (java.lang.StringIndexOutOfBoundsException e){
-//                System.out.println("正确率" + ((int)num) + "%");
-//            }
-//        }
-//        return times+((int)num) + "%";
-//    }
-//
-//
-//    int sublit = 12000;
-//    String number = null;
-//        if (score.contains("100%")){
-//        for (int i = 0; i < score.length(); i++) {
-//            if(Pattern.matches("\\d",String.valueOf(score.charAt(i)))){
-//
-//                if (number == null) {
-//                    number = String.valueOf(score.charAt(i));
-//                } else {
-//                    number = number + String.valueOf(score.charAt(i));
-//                }
-//            } else {
-//                break;
-//            }
-//        }
-//        sublit = Integer.parseInt(number);
-
 
 
 

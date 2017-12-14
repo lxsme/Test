@@ -1,25 +1,24 @@
-package test.URL;
+package test.uRL;
 
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.junit.Test;
-import test.constant.Website;
+import test.instance.Person;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.*;
+
+import static test.constant.Website.TOP_TEN;
 
 
 public class URLFind {
     @Test
 
 
-    public static void find(String id, int i) throws IOException {
+    public static StringBuffer find(String id, int i) throws IOException {
         URL url = null;
         if(i==1) {
             url = new URL(("http://www.sojson.com/open/api/weather/json.shtml?city=" + id));
@@ -27,7 +26,7 @@ public class URLFind {
         if(i==2){
             url= new URL(("http://api.k780.com/?app=phone.get&phone="+id+"&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json"));
         }if(i == 3){
-            url = new URL(Website.START);
+            url = new URL(id);
         }
         java.net.URLConnection uc = url.openConnection();
         InputStream is = uc.getInputStream();
@@ -38,9 +37,39 @@ public class URLFind {
             sb.append(new String(buff,0,len));
 
         }
-        System.out.println(sb);
+
+
+        return sb;
+    }
+
+
+
+    public static void send(String string) throws IOException {
+
+        DatagramSocket ds = new DatagramSocket(8082);
+        DatagramSocket socket = new DatagramSocket();
+        InetAddress address = InetAddress.getByName("192.168.20.159");
+
+        byte[] bytes = string.getBytes();
+        DatagramPacket dp  = new DatagramPacket(bytes,bytes.length,address,8180);
+
+        ds.send(dp);
+
 
     }
+
+
+    public static void person() throws IOException {
+        StringBuffer str = find(TOP_TEN, 3);
+
+        JSONArray jsonArray = JSONArray.fromObject(str);
+        for (int i=0;i<jsonArray.size();i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            Person person = (Person) JSONObject.toBean(jsonObject, Person.class);
+            System.out.println("第" + (i+1) + "名: " + person.toString());
+        }
+    }
+
 
 
 

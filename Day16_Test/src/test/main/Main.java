@@ -1,11 +1,12 @@
 package test.main;
 
 import org.dom4j.DocumentException;
+import test.constant.Website;
 import test.instance.Person;
 import test.data.Data;
 import test.tool.Input;
 import test.tool.Threads;
-import test.URL.URLFind;
+import test.uRL.URLFind;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -32,7 +33,6 @@ public class Main {
                             nickName = scanner.next();
                              person1=input.addNickName(person,nickName);
                         }
-
 
                         if (person1 != null) {
                             break;
@@ -64,12 +64,14 @@ public class Main {
                         case 1:
                             System.out.println("请选择城市");
                             String id = scanner.next();
-                            urlFind.find(id,1);
+                            StringBuffer stringBuffer1 = urlFind.find(id, 1);
+                            System.out.println(stringBuffer1);
                             break;
                         case 2:
                             System.out.println("请输入电话号码");
                             String number = scanner.next();
-                            urlFind.find(number,2);
+                            StringBuffer stringBuffer = urlFind.find(number, 2);
+                            System.out.println(stringBuffer);
                             break;
                         case 3:
                             System.out.println("请选择难度 1-简单 2-适中 3-困难");
@@ -92,26 +94,26 @@ public class Main {
                             long sorce = endTime-startTime;
                             System.out.println("用时:"+sorce+"毫秒");
                             Data.amend(person,sorce);
-                            
+                            String id1 = Website.BEGIN+"insert?username="+person.getNickname()+"&score="+sorce;
+//                            System.out.println(id1);
+                            urlFind.send(id1);
+
 
 
                             break;
                         case 4:
+                            System.out.println("前十名有:");
+                            URLFind.person();
+
                             break;
                             default:
+                                System.out.println("没有改项目");
                                 break;
                     }
 
-
-
-
-
-
-
-
-
                     break;
                 default:
+                    System.out.println("只有注册和登录");
                     break;
             }
 
