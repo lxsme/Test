@@ -62,5 +62,8 @@ public class Person {
         this.possWork = possWork;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" + "nickname='" + nickname + '\'' + ", score='" + score + '\'' + '}';
+    }
 }
