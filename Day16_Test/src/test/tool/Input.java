@@ -1,8 +1,9 @@
-package test.data;
+package test.tool;
 
 
 import org.dom4j.DocumentException;
-import test.Person;
+import test.instance.Person;
+import test.data.Data;
 
 import java.io.IOException;
 
@@ -21,6 +22,21 @@ public class Input {
     }
         person.setNickname(nickName);
         Data.set(person);
+
+        return person;
+
+    }
+    // 添加分数
+    public Person addScore(Person person,long score) throws IOException, DocumentException {
+        Map<String, Person> map = Data.get();
+        Set<String> keySet = map.keySet();
+        String so = String.valueOf(score);
+        person.setScore(so);
+        for (String s : keySet) {
+            if (s.equals(person.getName())){
+                map.get(s).setScore(so);
+            }
+        }
 
         return person;
 
@@ -66,8 +82,10 @@ public class Input {
         Set<String> strings = map.keySet();
         for (String string : strings) {
             String name = map.get(string).getName();
-            String possWork = map.get(string).getPossWork();
-            System.out.print(name+"----"+possWork);
+            String possWork = (map.get(string)).getPossWork();
+            String nickName = (map.get(string)).getNickname();
+
+            System.out.print(name+"----"+possWork+"---"+nickName);
             System.out.println();
         }
 

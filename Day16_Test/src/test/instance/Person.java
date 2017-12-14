@@ -1,9 +1,9 @@
-package test;
+package test.instance;
 
 public class Person {
     private String name;
     private String nickname;
-    private String score="0";
+    private String score="100000";
     private String possWork;
 
     public Person() {
@@ -15,7 +15,7 @@ public class Person {
         this.possWork = possWork;
     }
 
-    public Person(String name, String nickname, String score, String possWork) {
+    public Person(String name, String nickname,  String possWork,String score) {
         this.name = name;
         this.nickname = nickname;
         this.score = score;

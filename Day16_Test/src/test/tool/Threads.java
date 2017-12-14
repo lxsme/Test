@@ -1,4 +1,4 @@
-package test.game;
+package test.tool;
 
 import org.junit.Test;
 
@@ -15,11 +15,6 @@ public class Threads {
 
 
     }
-
-
-
-
-
 
 
 
