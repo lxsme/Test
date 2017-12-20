@@ -7,6 +7,7 @@ import test.data.Data;
 
 import java.io.IOException;
 
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -14,21 +15,21 @@ import java.util.regex.Pattern;
 public class Input {
 
     // 输入昵称
-    public Person addNickName(Person person, String nickName) throws IOException, DocumentException {
+    public Person addNickName(Person person, String nickName) throws IOException, DocumentException, SQLException, ClassNotFoundException {
         boolean isM ;
     if(!(isM = Pattern.matches("[A-Za-z].*", nickName))){
         System.out.println("昵称只能是英文名");
         return null;
     }
         person.setNickname(nickName);
-        Data.set(person);
+        Data.setInDatabase(person);
 
         return person;
 
     }
     // 添加分数
-    public Person addScore(Person person,long score) throws IOException, DocumentException {
-        Map<String, Person> map = Data.get();
+    public Person addScore(Person person,long score) throws IOException, DocumentException, SQLException {
+        Map<String, Person> map = Data.getInDatabase();
         Set<String> keySet = map.keySet();
         String so = String.valueOf(score);
         person.setScore(so);
@@ -45,9 +46,9 @@ public class Input {
 
 
     // 注册
-    public Person register(String name, String possWord) throws DocumentException, IOException {
+    public Person register(String name, String possWord) throws DocumentException, IOException, SQLException {
 
-        Map<String, Person> map = Data.get();
+        Map<String, Person> map = Data.getInDatabase();
         if (map != null) {
             Set<String> keySet = map.keySet();
             for (String s : keySet) {
@@ -77,8 +78,8 @@ public class Input {
     }
 
     // 遍历
-    public void show() throws DocumentException {
-        Map<String, Person> map = Data.get();
+    public void show() throws DocumentException, SQLException {
+        Map<String, Person> map = Data.getInDatabase();
         Set<String> strings = map.keySet();
         for (String string : strings) {
             String name = map.get(string).getName();
@@ -92,8 +93,8 @@ public class Input {
     }
 
     // 登录
-    public Person enter(String name, String possWord) throws DocumentException {
-        Map<String, Person> map = Data.get();
+    public Person enter(String name, String possWord) throws DocumentException, SQLException {
+        Map<String, Person> map = Data.getInDatabase();
         if (map != null) {
             Set<String> keySet = map.keySet();
             for (String s : keySet) {

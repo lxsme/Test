@@ -9,10 +9,11 @@ import test.tool.Threads;
 import test.uRL.URLFind;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, DocumentException, InterruptedException {
+    public static void main(String[] args) throws IOException, DocumentException, InterruptedException, SQLException, ClassNotFoundException {
         Input input= new Input();
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -93,7 +94,7 @@ public class Main {
                             }
                             long sorce = endTime-startTime;
                             System.out.println("用时:"+sorce+"毫秒");
-                            Data.amend(person,sorce);
+                            Data.amendInDatabase(person,sorce);
                             String id1 = Website.BEGIN+"insert?username="+person.getNickname()+"&score="+sorce;
 //                            System.out.println(id1);
                             urlFind.send(id1);
