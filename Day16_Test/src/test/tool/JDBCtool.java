@@ -54,9 +54,10 @@ public class JDBCtool {
 
 
 
-    public static void execute(ExecuteInter e) throws SQLException {
+    public static void execute1(ExecuteInter e) throws SQLException {
 
         Connection connection = DriverManager.getConnection(url, user, possword);
+
         Statement execute = e.execute(connection);
         execute.close();
         connection.close();

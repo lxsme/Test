@@ -112,10 +112,10 @@ public class Data {
     // 添加
     public static void setInDatabase(Person person) throws ClassNotFoundException, SQLException {
 
-        JDBCtool.execute(new ExecuteInter() {
+        JDBCtool.execute1(new ExecuteInter() {
             @Override
             public Statement execute(Connection conn) throws SQLException {
-                String sql = "INSERT  INTO user VALUES (" + person.getName() + "," + person.getNickname() + "," + person.getPossWork() + "," + person.getScore() + ");";
+                String sql = "INSERT  INTO uers VALUES (" + person.getName() + "," + person.getNickname() + "," + person.getPossWork() + "," + person.getScore() + ");";
                 PreparedStatement pstate = conn.prepareStatement(sql);
                 pstate.execute();
 
@@ -129,11 +129,11 @@ public class Data {
     // 取得数据
     public static Map<String, Person> getInDatabase() throws SQLException {
 
-        Map<String,Person> map= null;
+
         QueryRunner qr = new QueryRunner();
 
-        String sql = "select * from user";
-        try {
+        String sql = "select * from uers";
+
 
 
         Map<String,Person> query = qr.query(JDBCtool.getConnection(), sql, new ResultSetHandler<Map<String,Person>>() {
@@ -157,22 +157,22 @@ public class Data {
                 return users;
             }
         });
-        map = query;
-        }catch (SQLException e){
 
-        }
 
-        return map;
+
+
+
+        return query;
     }
 
 
 
 // 修改
 public static void amendInDatabase(Person person, long score) throws SQLException {
-    JDBCtool.execute(new ExecuteInter() {
+    JDBCtool.execute1(new ExecuteInter() {
         @Override
         public Statement execute(Connection conn) throws SQLException {
-            PreparedStatement ptate = conn.prepareStatement("UPDATE user SET sorce=" + score + "  WHERE name =" + person.getName());
+            PreparedStatement ptate = conn.prepareStatement("UPDATE uers SET sorce=" + score + "  WHERE name =" + person.getName());
             ptate.execute();
 
 
