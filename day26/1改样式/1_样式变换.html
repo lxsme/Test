@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式变换</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+        .div1{
+            width:100px ;
+            height: 100px;
+            border: solid;
+            margin: 10px;
+            display: inline-block;
+            background-color: grey;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div style="width: 700px;height: 800px;border: dotted;float: left">
+<center>
+    <div id="oc" style="background-color: grey;height: 150px;">
+        <br>
+        <h1>点击设置样式</h1>
+
+    </div>
+        <div style="width: 100px;height: 100px;background-color: brown" id="bh">
+            <span>哈哈</span>
+
+        </div>
+
+</center>
+</div>
+
+<div id="pc" style="border: solid;width: 400px;height: 700px;float: left;visibility: hidden">
+    <center>
+    <h1>请选择颜色</h1>
+    <div class="div1" id="s1" style="background-color:rosybrown ">红</div>
+    <div class="div1" id="s2" style="background-color:darkslategray ">绿</div>
+    <div class="div1" id="s3" style="background-color:cornflowerblue ">蓝</div>
+        <h1>请选择宽度</h1>
+        <div class="div1" id="w1">100</div>
+        <div class="div1" id="w2" >200</div>
+        <div class="div1" id="w3" >300</div>
+        <h1>请选择高度</h1>
+        <div class="div1" id="h1">100</div>
+        <div class="div1" id="h2">200</div>
+        <div class="div1" id="h3">300</div>
+        <span id="hf">恢复</span>
+        <span style="margin-left: 10px" id="qd">确定</span>
+
+
+    </center>
+</div>
+</body>
+<script type="text/javascript">
+    $('#oc').click(function () {
+        $("#pc").css({"visibility": "visible"})
+    })
+        $('#s1').click(function () {
+                $("#bh").css({"backgroundColor":"rosybrown"})
+        })
+            $('#s2').click(function () {
+                    $("#bh").css({"backgroundColor":"darkslategray"})
+            })
+                $('#s3').click(function () {
+                        $("#bh").css({"backgroundColor":"cornflowerblue"})
+                })
+                    $('#w1').click(function () {
+                        $("#bh").css({"width":"100px"})
+                    })
+                        $('#w2').click(function () {
+                            $("#bh").css({"width":"200px"})
+                        })
+
+                            $('#w3').click(function () {
+                                $("#bh").css({"width":"300px"})
+                             })
+
+                            $('#h1').click(function () {
+                                $("#bh").css({"height":"100px"})
+                            })
+                                $('#h2').click(function () {
+                                    $("#bh").css({"height":"200px"})
+                                })
+
+                                    $('#h3').click(function () {
+                                            $("#bh").css({"height":"300px"})
+                                        })
+                                    $('#hf').click(function () {
+                                            $("#bh").css({"width": "100px","height": "100px","background-color": "brown"})
+                                        })
+
+
+                                    $('#qd').click(function () {
+                                        $('#pc').css({"visibility":"hidden"})
+                                    })
+
+
+
+</script>
+</html>
