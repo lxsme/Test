@@ -9,14 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.GetData;
 import net.sf.json.JSONArray;
-import data.User;
+import domain.User;
 
 public class GetAll extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+
 			throws ServletException, IOException {
 		try {
+			req.setCharacterEncoding("utf-8");
+			resp.setContentType("text/html;charset=utf-8");
 			List<User> users = new GetData().queryBeanList();
 
 			User[] userarray = users.toArray(new User[users.size()]);

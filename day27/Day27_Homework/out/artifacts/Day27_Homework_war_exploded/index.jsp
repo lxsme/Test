@@ -17,8 +17,8 @@
   <form action="doServlet" method="post">
     <label for="uname">用户名:</label>
     <input type="text" id="uname" name="uname"/>
-    <label for="uid">用户id:</label>
-    <input type="text" id="uid" name="uid"/>
+    <%--<label for="uid">用户id:</label>--%>
+    <%--<input type="text" id="uid" name="uid"/>--%>
     <label for="loc">所在地:</label>
     <input type="text" id="loc" name="loc"/>
     <label for="age">年龄:</label>
@@ -27,59 +27,11 @@
 
 
   </form>
-<button onclick="addTable()">查看所有信息</button>
+<a href="show.html">看所有信息</a>
   <table border="1">
   </table>
   </body>
 <script type="text/javascript">
-  function addTable() {
-      $.get("http://localhost:8080/GetAll",function (data,status) {
-          if(status == "success"){
-              var jsonData = $.parseJSON(data);
-
-              if(jsonData !=null){
-
-                  $('table').append($('<tr>').append(
-                      $('<th>').text("用户名")
-                      ).append(
-                      $('<th>').text("用户id")
-                      ).append(
-                      $('<th>').text("所在地")
-                      ).append(
-                      $('<th>').text("年龄")
-                      )
-                  )
-
-                  $.each(jsonData,function (index,data) {
-
-                      $('table').append($('<tr>').append(
-                          $('<td>').text(data['uname'])
-                          ).append(
-                          $('<td>').text('uid')
-                          ).append(
-                          $('<td>').text('loc')
-                          ).append(
-                          $('<td>').text('age')
-                          )
-                      )
-                  })
-
-
-
-
-
-
-              }
-
-
-
-          }
-
-
-
-      })
-
-  }
 
 
 

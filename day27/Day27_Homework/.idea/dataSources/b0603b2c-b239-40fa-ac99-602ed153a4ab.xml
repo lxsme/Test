@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="day18">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="day19">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="1" name="day19_z"/>
+    <schema id="5" parent="1" name="day21"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="test"/>
+    <schema id="9" parent="1" name="day27">
+      <Visible>1</Visible>
+    </schema>
+    <table id="10" parent="3" name="book"/>
+    <table id="11" parent="3" name="comment"/>
+    <table id="12" parent="3" name="hw_user"/>
+    <table id="13" parent="3" name="type"/>
+    <table id="14" parent="3" name="u_coll_bk"/>
+    <table id="15" parent="9" name="user"/>
+    <column id="16" parent="10" name="bkid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="10" name="bkname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="10" name="author">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="10" name="tid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="20" parent="10" name="book_fk_type">
+      <ColNames>tid</ColNames>
+    </index>
+    <key id="21" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>bkid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="22" parent="10" name="book_fk_type">
+      <ColNames>tid</ColNames>
+      <RefSchemaName>day19</RefSchemaName>
+      <RefTableName>type</RefTableName>
+      <RefColNames>tid</RefColNames>
+    </foreign-key>
+    <column id="23" parent="11" name="comid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="11" name="content">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="bkid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="uid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="datetime">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="28" parent="11" name="comment_fk_bkid">
+      <ColNames>bkid</ColNames>
+    </index>
+    <index id="29" parent="11" name="comment_fk_uid">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="30" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>comid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="11" name="comment_fk_bkid">
+      <ColNames>bkid</ColNames>
+      <RefSchemaName>day19</RefSchemaName>
+      <RefTableName>book</RefTableName>
+      <RefColNames>bkid</RefColNames>
+    </foreign-key>
+    <foreign-key id="32" parent="11" name="comment_fk_uid">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>day19</RefSchemaName>
+      <RefTableName>hw_user</RefTableName>
+      <RefColNames>uid</RefColNames>
+    </foreign-key>
+    <column id="33" parent="12" name="uid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="12" name="uname">
+      <Position>2</Position>
+      <DataType>char(60)|0</DataType>
+    </column>
+    <column id="35" parent="12" name="age">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="12" name="loc">
+      <Position>4</Position>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <key id="37" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="13" name="tid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="13" name="tname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="40" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="41" parent="14" name="uid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="14" name="bkid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="43" parent="14" name="uk_ucb">
+      <ColNames>uid
+bkid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="44" parent="14" name="u_coll_bkid_fk_bkid">
+      <ColNames>bkid</ColNames>
+    </index>
+    <key id="45" parent="14" name="uk_ucb">
+      <ColNames>uid
+bkid</ColNames>
+      <UnderlyingIndexName>uk_ucb</UnderlyingIndexName>
+    </key>
+    <foreign-key id="46" parent="14" name="u_coll_bkid_fk_uid">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>day19</RefSchemaName>
+      <RefTableName>hw_user</RefTableName>
+      <RefColNames>uid</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="14" name="u_coll_bkid_fk_bkid">
+      <ColNames>bkid</ColNames>
+      <RefSchemaName>day19</RefSchemaName>
+      <RefTableName>book</RefTableName>
+      <RefColNames>bkid</RefColNames>
+    </foreign-key>
+    <column id="48" parent="15" name="uid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="49" parent="15" name="uname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="50" parent="15" name="age">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="15" name="loc">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="52" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -12,7 +12,7 @@ public class JdbcUtil {
     static {
         Properties properties = new Properties();
         try {
-            properties.load(new FileReader("src/JdbcUtil.properties"));
+            properties.load(new FileReader("C:\\Users\\lanou\\Desktop\\JavaEE\\Day27_Homework\\src\\JdbcUtil.properties"));
             String driverName = properties.getProperty("driverName");
             url = properties.getProperty("url");
             database = properties.getProperty("database");
@@ -35,6 +35,7 @@ public class JdbcUtil {
 
     public static Connection getConnection(){
         try {
+
             Connection connection = DriverManager.getConnection(url+database,user,password);
             return connection;
         } catch (SQLException e) {
