@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style type="text/css">
+    body{
+    background:grey;
+    margin: 0;
+    }
+    .div1{
+    height: 80px;
+    background: white;
+
+    }
+    .img1{
+        width: 50px;
+        height: 50px;
+        padding-left:10px;
+        float: left;
+    }
+    .div2{
+        float: left;
+        margin: 10px;
+        font-size: 20px;
+        font-family: "Adobe 黑体 Std R";
+
+    }
+
+    .div3{
+        width: 80%;
+        height:600px;
+        margin-left: 200px;
+        margin-right:200px;
+        margin-top: 100px;
+        background-color: white;
+    }
+
+
+        .bottun1{
+            width: 50%;
+            height: 30px;
+            float: left;
+
+        }
+        div{
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .bottun{
+            width: 400px;
+            height:60px;
+            background-color: cornflowerblue;
+            margin-left: 70px;
+
+        }
+        .text{
+            width: 400px;
+            height: 60px;
+        }
+        a{
+            text-decoration-line: none;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+        <input class="bottun1" type="submit" value="登录" onclick="window.location.href='123_login.html'">
+        <input class="bottun1" type="submit" value="账号注册">
+
+
+</div>
+ <div class="div1">
+
+    <img src="img/kl.png" id="kl" class="img1">
+    <div class="div2">某某
+        <span style="font-size: 15px">注册</span>
+    </div>
+ </div>
+
+    <div class="div3">
+        <br>
+        <center ><h2 style="color: cornflowerblue;margin-left: 50px;margin-bottom: 10px" >邮箱号注册</h2>
+            <hr style="width: 200px;margin-left: 700px">
+            <br>
+
+        <form action="rs" method="post">
+            <div style="margin-left: 120px">
+                <label for="zh" style="margin-right: 10px">邮箱地址 </label>
+
+                <input class="text" type="text" placeholder="请输入邮箱地址" id="zh" name="uname" onfocus="inputFocus()" onblur="inputBlur()" >
+                <span id="mailReminder"style="visibility: hidden">请填写邮箱地址</span>
+
+            </div>
+            <div style="margin-left: 100px">
+                <label for="password" style="margin-right: 10px">登录密码 </label>
+
+                <input class="text" type="password" placeholder="请设置登录密码" id="password" name="password" onfocus="inputFocus1()" onblur="inputBlur1()">
+                <span id="passwordReminder" style="visibility: hidden">密码不能为空</span>
+            </div>
+
+            <div>
+                <input type="checkbox" id="ty">
+            <label style="margin-right: 130px" for="ty">同意并遵守 <a href="">《服务条款》</a></label>
+            </div>
+            <div>
+            <input type="submit" id="commit" value="下一步" class="bottun" onclick="cilcked(this)">
+            </div>
+
+
+        </form>
+        </center>
+    </div>
+
+
+</body>
+<script type="text/javascript">
+
+    var mail = document.getElementById("mailReminder");
+    function inputFocus() {
+        mail.style.color = "red";
+        mail.style.visibility = "visible";
+    }
+    
+    function inputBlur() {
+        mail.style.visibility = "hidden";
+    }
+
+    var password = document.getElementById("passwordReminder")
+    function inputFocus1() {
+
+            password.style.color = "red";
+            password.style.visibility= "visible";
+
+
+    }
+
+    function inputBlur1() {
+
+            password.style.visibility="hidden";
+
+    }
+    function cilcked(ele) {
+
+        ele.style.border = "dotted";
+    }
+    
+</script>
+</html>
