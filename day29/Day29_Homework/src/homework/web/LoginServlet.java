@@ -22,23 +22,20 @@ public class LoginServlet extends HttpServlet {
         String uname = request.getParameter("uname");
         String password = request.getParameter("password");
 
-        List<User> users = null;
         try {
-            users = GetData.queryBeanList();
-
+            User user = GetData.queryBeanByUname(uname);
+            System.out.println("uname:"+uname);
+            System.out.println(""+user);
+            if (user!=null&&user.getPassword().equals(password)){
+                RequestDispatcher rs = request.getRequestDispatcher("/show.html");
+                rs.forward(request,response);
+            }else{
+                response.sendRedirect("http://localhost:8080/123_login.html");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        for (User user : users) {
-            if (user.getUname().equals(uname) && user.getPassword().equals(password)){
-                response.sendRedirect("http://localhost:8080/123_login.html");
-
-            }
-        }
-
-        RequestDispatcher rs = request.getRequestDispatcher("/show.html");
-        rs.forward(request,response);
 
     }
 

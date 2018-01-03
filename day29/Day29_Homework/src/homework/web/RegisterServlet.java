@@ -24,48 +24,23 @@ public class RegisterServlet extends HttpServlet {
         String uname = request.getParameter("uname");
         String password = request.getParameter("password");
 
-
-        List<User> users = null;
         try {
-            users = GetData.queryBeanList();
-
+            User user = GetData.queryBeanByUname(uname);
+            System.out.println("uname:"+uname);
+            System.out.println(""+user);
+            if (user!=null){
+                RequestDispatcher rs = request.getRequestDispatcher("/123_register.html");
+                rs.forward(request,response);
+            }else{
+                user = new User();
+                user.setPassword(password);
+                user.setUname(uname);
+                GetData.update(user);
+                response.sendRedirect("http://localhost:8080/123_login.html");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-            for (User user1 : users) {
-                if(user1 !=null && uname.equals(user1.getUname())){
-                    RequestDispatcher rs = request.getRequestDispatcher("/123_register.html");
-
-                }
-            }
-
-            User user = new User(uname,password);
-            try {
-                GetData.update(user);
-                response.sendRedirect("http://localhost:8080/123_login.html");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

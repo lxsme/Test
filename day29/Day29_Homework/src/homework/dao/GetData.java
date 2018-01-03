@@ -4,6 +4,7 @@ package homework.dao;
 import homework.mainDao.User;
 import homework.util.JdbcUtil;
 import homework.util.WhQueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 
@@ -22,6 +23,12 @@ public class GetData {
         return users;
     }
 
+
+    public static User queryBeanByUname(String uname) throws SQLException {
+        String sql = "select * from user where uname=?";
+        User user = new WhQueryRunner().query(JdbcUtil.getConnection(),sql,new BeanHandler<User>(User.class),uname);
+        return user;
+    }
 
     public static void update(User user) throws SQLException {
 
