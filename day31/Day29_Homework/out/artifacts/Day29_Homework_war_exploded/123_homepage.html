@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>某某主页</title>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+    .div1{
+        height: 150px;
+        background-color:  #decfaa;
+        border-bottom: double;
+
+
+    }
+
+    .div2{
+        width: 400px;
+        background-color:  #decfaa;
+        border-right-style: solid ;
+        height: 800px;
+
+
+    }
+
+    .div3{
+        float: right;
+        height: 800px;
+        background-color: #decfaa;
+
+
+    }
+
+
+    body{
+        margin: 0;
+    }
+
+    a{
+        text-decoration-line: none;
+        color: black;
+        font-size: large;
+    }
+    .button{
+        width: 250px;
+        height: 50px;
+        background-color: cornflowerblue;
+        margin: 10px;
+    }
+
+
+
+    </style>
+
+</head>
+<body>
+<div class="div1">
+    <br>
+    <center><h1 style="color: dimgray">某某主页</h1></center>
+    <div>
+        <a href="" style="margin-left: 30px">首页</a>
+        <span>|</span>
+        <a href="" >查询1</a>
+        <span>|</span>
+        <a href="" >查询2</a>
+        <span>|</span>
+        <a href="" >查询3</a>
+        <span>|</span>
+    </div>
+
+</div>
+
+<div class="div2">
+    <center>
+        <div>图书分类</div>
+        <button class="button" id="xh">玄幻小说</button>
+        <button class="button" id="kh">科幻小说</button>
+        <button class="button" id="wx">武侠小说</button>
+    </center>
+
+</div>
+<div class="div3"></div>
+</body>
+<script type="text/javascript">
+    var arr = ["../img/123.jpg","../img/456.jpg","../img/457.jpg",];
+    function addImg() {
+
+        $.each(arr,function (index,ele) {
+            if(arr !=null){
+                $('#div3').append($('<img>').attr({"src":ele}).css({"weight":"100px",
+                    "height":"150px"})
+                )
+            }
+        })
+    }
+
+    $('#xh').click(addImg);
+
+
+
+
+
+    var imgMana = function () {
+        //内部指针索引
+        this.idx = 0;
+        //需要加载的图片列表
+        this.imgs = [
+            'https://dimg04.c-ctrip.com/images/70010b0000005a2k71535_280_170_112.jpg',
+            'https://dimg04.c-ctrip.com/images/700f0c0000006nxnfD731_280_170_112.jpg',
+            'https://dimg04.c-ctrip.com/images/70020h0000008s9xx8ACF_280_170_112.jpg',
+            'https://dimg04.c-ctrip.com/images/700j0h0000008sx877A9B_280_170_112.jpg',
+            'https://dimg04.c-ctrip.com/images/700u0h0000008zdvbA836_1920_360_111.jpg'
+        ];
+        //加载图片 num:加载的数量
+        this.loadImg = function (num) {
+            num = num || 1;
+            var info, len = this.idx + num;
+            for (this.idx; this.idx < len; this.idx++) {
+                info = this.imgs[this.idx];
+                if (!info) {
+                    alert('图片都加载完啦');
+                    return this;
+                }
+                this.render(info);
+            }
+        }
+        //渲染图片
+        this.render = function (img) {
+            img && $('body').append("<img src='" + img + "' />");
+        }
+        return this;
+    }
+
+    //使用方式
+    var imgM=new imgMana();
+    $('.button').click(function(){
+        imgM.loadImg(2);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</html>
+
