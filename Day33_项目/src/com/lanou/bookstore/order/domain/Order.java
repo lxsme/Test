@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Order {
-    private int oid;
+    private String oid;
     private Timestamp ordertime;
-    private BigDecimal total;
+    private double total;
     private int state;
-    private int uid;
+    private String uid;
     private String address;
 
     @Override
@@ -16,11 +16,11 @@ public class Order {
         return "Order{" + "oid=" + oid + ", ordertime=" + ordertime + ", total=" + total + ", state=" + state + ", uid=" + uid + ", address='" + address + '\'' + '}';
     }
 
-    public int getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(int oid) {
+    public void setOid(String oid) {
         this.oid = oid;
     }
 
@@ -32,11 +32,11 @@ public class Order {
         this.ordertime = ordertime;
     }
 
-    public BigDecimal getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(BigDecimal total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -48,11 +48,11 @@ public class Order {
         this.state = state;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

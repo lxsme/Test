@@ -18,6 +18,12 @@ public class CategoryServlet extends BaseServlet {
         List<Category> categories = categoryDao.queryAll();
         HttpSession session = request.getSession();
         session.setAttribute("category",categories);
+
+
+
+
+
+
         return "f:/jsps/left.jsp";
 
     }

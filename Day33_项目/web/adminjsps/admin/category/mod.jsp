@@ -21,9 +21,11 @@
   
   <body>
     <h1>修改分类</h1>
-    <form action="javascript:alert('修改分类成功！');" method="post">
+    <p style="font-weight: 900; color: red">${msg}</p>
+    <form action="/adminCategory?method=mod&cid=${sessionScope.cid}" method="post">
+        <input type="hidden" value="">
     	<input type="hidden" name="cid" value="" />
-    	分类名称：<input type="text" name="cname" value="JavaSE分类"/>
+    	分类名称：<input type="text" name="cname" value="${sessionScope.cname}"/>
     	<input type="submit" value="修改分类"/>
     </form>
   </body>

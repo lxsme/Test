@@ -98,7 +98,11 @@ public class UserServlet extends BaseServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user",fromDb);
             List<Cartltem> cart = new ArrayList<>();
+            double sumMoney=0;
+            int orderCount=1;
             session.setAttribute("cart",cart);
+            session.setAttribute("sumMoney",sumMoney);
+            session.setAttribute("orderCount",orderCount);
 
 
             return "f:/index.jsp";

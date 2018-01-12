@@ -21,8 +21,8 @@
   
   <body>
     <h1>添加分类</h1>
-    <p style="font-weight: 900; color: red">${msg }</p>
-    <form action="javascript:alert('添加分类成功！');" method="post">
+    <p style="font-weight: 900; color: red">${msg}</p>
+    <form action="/adminCategory?method=add" method="post">
     	分类名称：<input type="text" name="cname"/>
     	<input type="submit" value="添加分类"/>
     </form>

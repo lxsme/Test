@@ -2,6 +2,7 @@ package com.lanou.bookstore.book.web.servlet;
 
 import com.lanou.bookstore.book.dao.BookDao;
 import com.lanou.bookstore.book.domain.Book;
+import com.lanou.bookstore.book.service.BookService;
 import com.lanou.bookstore.user.util.BaseServlet;
 
 import javax.servlet.annotation.WebServlet;

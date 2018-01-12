@@ -21,9 +21,10 @@
   
   <body>
     <h1>删除分类</h1>
-    <form action="javascript:alert('删除分类成功！');" method="post">
+    <p style="font-weight: 900; color: red">${msg}</p>
+    <form action="/adminCategory?method=delete&cid=${sessionScope.cid}" method="post">
     	<input type="hidden" name="cid" value="" />
-    	分类名称：<input type="text" name="cname" value="JavaSE分类" disabled="disabled"/>
+    	分类名称：<input type="text" name="cname" value="${sessionScope.cname}" disabled="disabled"/>
     	<input type="submit" value="删除分类"/>
     </form>
   </body>

@@ -25,23 +25,41 @@ public class CartServlet extends BaseServlet{
     public String addCartltem(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException, SQLException {
         HttpSession session = request.getSession();
         List<Cartltem> cart = (List<Cartltem>) session.getAttribute("cart");
+        double sumMoney = (double) session.getAttribute("sumMoney");
         int bid = Integer.parseInt(request.getParameter("bid"));
+
         BookDao bookDao = new BookDao();
         Book book1 = bookDao.findByBid(bid);
         int count = Integer.parseInt(request.getParameter("count"));
+        sumMoney = sumMoney + count * book1.getPrice();
+        session.setAttribute("sumMoney",sumMoney);
+        if (cart !=null){
+            for (Cartltem cartltem : cart) {
+                if (cartltem.getBook().getBid()==bid){
 
-        for (Cartltem cartltem : cart) {
-            if (cartltem.getBook().getBid()==bid){
-                cartltem.setCount(cartltem.getCount()+count);
+                    count=cartltem.getCount()+count;
+                    cartltem.setCount(count);
 
-                return "f:jsps/cart/list.jsp";
+                    return "f:jsps/cart/list.jsp";
+                }
             }
-        }
 
+        }else {
+            sumMoney=0;
+            cart = new ArrayList<>();
+            sumMoney = sumMoney + count * book1.getPrice();
+            session.setAttribute("sumMoney",sumMoney);
+
+        }
         Cartltem cartltem = new Cartltem(book1,count);
         cart.add(cartltem);
-        int sum= ;
-        session.setAttribute("sum",);
+
+
+
+
+
+
+
         session.setAttribute("cart", cart);
 
         return "f:jsps/cart/list.jsp";
@@ -52,6 +70,9 @@ public class CartServlet extends BaseServlet{
     public String clear(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         List<Cartltem> cart = (List<Cartltem>) session.getAttribute("cart");
+        double sumMoney = (double) session.getAttribute("sumMoney");
+        sumMoney=0;
+        session.setAttribute("sumMoney",sumMoney);
         cart.clear();
         return "f:jsps/cart/list.jsp";
 
@@ -64,15 +85,20 @@ public class CartServlet extends BaseServlet{
         Book book = bookDao.findByBid(bid);
         HttpSession session = request.getSession();
         List<Cartltem> cart = (List<Cartltem>) session.getAttribute("cart");
-
+        double sumMoney = (double) session.getAttribute("sumMoney");
         for (int i = 0; i < cart.size(); i++) {
             if(cart.get(i).getBook().getBid()==bid){
+                int count = cart.get(i).getCount();
                 cart.remove(i);
+                sumMoney=sumMoney-book.getPrice()*count;
             }
         }
 
+        if (sumMoney<0){
+            sumMoney=0;
+        }
         session.setAttribute("cart",cart);
-
+        session.setAttribute("sumMoney",sumMoney);
         return "r:jsps/cart/list.jsp";
     }
 

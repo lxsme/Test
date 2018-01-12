@@ -35,23 +35,31 @@
   </head>
   
   <body>
-  <div>
-    <img src="<c:url value='/book_img/20029394-1_l.jpg'/>" border="0"/>
-  </div>
-  <form style="margin:20px;" id="form" action="javascript:alert('操作成功！');" method="post">
-  	图书名称：<input type="text" name="bname" value="精通Spring2.x"/><br/>
-  	图书单价：<input type="text" name="price" value="63.2元"/><br/>
-  	图书作者：<input type="text" name="author" value="陈华雄"/><br/>
-  	图书分类：<select style="width: 150px; height: 20px;" name="cid">
-     		<option value="">JavaSE</option>
-    		<option value="">JavaEE</option>
-			<option value="">JavaScript</option>
-			<option value="">Hibernate</option>
-			<option value="">Struts</option>
-			<option value="" selected='selected'>Spring</option>
-    	</select><br/>
-  	<input type="submit" name="method" value="del" onclick="return confirm('是否真要删除该图书？');"/>
-  	<input type="submit" name="method" value="mod"/>
-  </form>
+  <p style="font-weight: 900; color: red">${msg}</p>
+  	<c:if test="${sessionScope.book !=null}">
+
+		<div>
+			<img src="<c:url value='/../../${sessionScope.book.image}'/>" border="0"/>
+		</div>
+		<form style="margin:20px;" id="form" method="post" action="/aBook?method=delBook&bid=${sessionScope.book.bid}">
+			图书名称：<input type="text" name="bname" value="${sessionScope.book.bname}"/><br/>
+			图书单价：<input type="text" name="price" value="${sessionScope.book.price}元"/><br/>
+			图书作者：<input type="text" name="author" value="${sessionScope.book.author}"/><br/>
+			图书分类：<select style="width: 150px; height: 20px;" name="cid">
+
+			<c:forEach items="${categories}" var="categorie">
+				<option value="">${categorie.cname}</option>
+			</c:forEach>
+		</select><br/>
+			<input type="submit" id="subDel" name="method" value="del" onclick="{if(confirm('确定删除吗?')){this.document.formname.submit();return true;}return false;}" />
+			<input type="submit" name="method" value="mod"/>
+		</form>
+
+	</c:if>
+
+
+
+
   </body>
+
 </html>

@@ -3,6 +3,19 @@ package com.lanou.bookstore.book.domain;
 public class Book {
     private int bid;
     private String bname;
+    private double price;
+    private String author;
+    private String image;
+    private int cid;
+    private boolean del;
+
+    public boolean isDel() {
+        return del;
+    }
+
+    public void setDel(boolean del) {
+        this.del = del;
+    }
 
     public Book(int bid, String bname, double price, String author, String image, int cid) {
         this.bid = bid;
@@ -13,10 +26,7 @@ public class Book {
         this.cid = cid;
     }
 
-    private double price;
-    private String author;
-    private String image;
-    private int cid;
+
 
     public int getBid() {
         return bid;

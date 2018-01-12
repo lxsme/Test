@@ -7,6 +7,9 @@ import com.lanou.bookstore.user.service.exception.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -124,6 +127,36 @@ public class UserService {
 
         }
     }
+
+
+    public String adminLogin(String adminname1 ,String password) throws IOException, InvalidUsernameException, PasswordNotMatchException {
+
+        Properties info = new Properties();
+        info.load(new FileReader("C:\\Users\\lanou\\Desktop\\JavaEE\\Day33_项目\\src/admin.properties"));
+        String adminname = info.getProperty("adminname");
+        String adminpassword = info.getProperty("adminpassword");
+
+        if (!(adminname1.equals(adminname))){
+            throw new InvalidUsernameException();
+
+        }else {
+
+            if (!(password.equals(adminpassword))){
+                throw new PasswordNotMatchException();
+            }
+
+            return "success";
+        }
+
+
+
+
+
+
+    }
+
+
+
 
 
 }

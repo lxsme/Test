@@ -29,5 +29,8 @@
 	密　码：<input type="password" name="password"/><br/>
 	<input type="submit" value="登录"/>
 </form>
+
+<a href="<c:url value='/adminjsps/login.jsp'/>">管理员登录</a>
+
   </body>
 </html>

@@ -84,33 +84,29 @@
 				<td>${cart.book.price}</td>
 				<td>${cart.count}</td>
 				<td>${cart.count * cart.book.price}</td>
-				<td><a id="delete" href="<c:url value='/car?method=delete&bid=${cart.book.bid}'/>">删除</a></td>
+				<td><a id="delete" href="<c:url value='/car?method=delete&bid=${cart.book.bid}&count=${cart.count}'/>">删除</a></td>
 			</tr>
-
-			<tr>
-				<td colspan="${}" align="right" style="font-size: 15pt; font-weight: 900">
-					合计：319.2元
-				</td>
-			</tr>
-
-
-
-
 
 		</c:forEach>
+		<tr>
+			<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
+				合计：${sessionScope.sumMoney}元
+			</td>
+		</tr>
+
 
 	</c:if>
 
 
 
+	<%--<tr>--%>
+		<%--<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">--%>
+			<%--合计：319.2元--%>
+		<%--</td>--%>
+	<%--</tr>--%>
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			合计：319.2元
-		</td>
-	</tr>
-	<tr>
-		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a id="buy" href="<c:url value='/jsps/order/desc.jsp'/>"></a>
+			<a id="buy" href="<c:url value='/order?method=add'/>"></a>
 		</td>
 	</tr>
 

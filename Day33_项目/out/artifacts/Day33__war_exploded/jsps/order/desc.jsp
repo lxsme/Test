@@ -57,24 +57,30 @@
 <table border="1" width="100%" cellspacing="0" background="black">
 	<tr bgcolor="gray" bordercolor="gray">
 		<td colspan="6">
-			订单编号：123456　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2元</b></font>
+
+			订单编号：${sessionScope.order.oid}　成交时间：${sessionScope.order.ordertime}　金额：<font color="red"><b>${sessionScope.order.total}元</b></font>
 		</td>
 	</tr>
 
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
+	<c:forEach items="${sessionScope.newCart}" var="newCart">
+		<tr bordercolor="gray" align="center">
+			<td width="15%">
+				<div><img src="<c:url value='/../../${newCart.book.image}'/>" height="75"/></div>
+			</td>
+			<td>${newCart.book.bname}</td>
+			<td>单价：${newCart.book.price}元</td>
+			<td>作者：${newCart.book.author}</td>
+			<td>数量：${newCart.count}</td>
+			<td>小计：${newCart.count * newCart.book.price}</td>
+
+		</tr>
+
+	</c:forEach>
 
 </table>
+
 <br/>
-<form method="post" action="javascript:alert('别点了，再点就去银行页面了！');" id="form" target="_parent">
+<form method="post" action="/order?method=payment&oid=${sessionScope.order.oid}" id="form" target="_parent">
 	收货地址：<input type="text" name="address" size="50" value="北京市海淀区金燕龙大厦2楼216室无敌收"/><br/>
 
 	选择银行：<br/>
@@ -88,6 +94,7 @@
 	<img src="../../bank_img/ccb.bmp" align="middle"/><br/><br/>
 	<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行
 	<img src="../../bank_img/bcc.bmp" align="middle"/><br/>
+
 </form>
 <a id="pay" href="javascript:document.getElementById('form').submit();"></a>
 

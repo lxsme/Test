@@ -56,178 +56,222 @@
 
 <table border="1" width="100%" cellspacing="0" background="black">
 
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
+	<c:if test="${sessionScope.myOrders !=null}">
 
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
-
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
-
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
+	<c:forEach items="${sessionScope.myOrders}" var="myOrder">
 
 
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
+		<tr bgcolor="gray" bordercolor="gray">
+			<td colspan="6">
+				订单编号：${myOrder.oid}　成交时间：${myOrder.ordertime}　金额：<font color="red"><b>${myOrder.total}</b></font>
+				<c:if test="${myOrder.state == 0}">
+				<a href="<c:url value='/order?method=load&oid=${myOrder.oid}'/>">付款</a>
+				</c:if>
+				<c:if test="${myOrder.state == 1}">
+				<a href="/order?method=confirm&oid=${myOrder.oid}">确认收货</a>
+				</c:if>
+				<c:if test="${myOrder.state == 2}">
+				订单结束
+				</c:if>
+			</td>
+		</tr>
+				<c:forEach items="${myOrder.allitems}" var="showItem">
+		<tr bordercolor="gray" align="center">
 
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
+			<td width="15%">
+					<div><img src="<c:url value='/../../${showItem.book.image}'/>" height="75"/></div>
 
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
+			</td>
+			<td>书名：${showItem.book.bname}</td>
+			<td>单价：${showItem.book.price}元</td>
+			<td>作者：${showItem.book.author}</td>
+			<td>数量：${showItem.count}</td>
+			<td>小计：${showItem.book.price*showItem.count}</td>
+		</tr>
+			</c:forEach>
 
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
+			</c:forEach>
+	</c:if>
 
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
 
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
 
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
 
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
 
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
 
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
 
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
 
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
+	<%--<tr bgcolor="gray" bordercolor="gray">--%>
+		<%--<td colspan="6">--%>
+			<%--订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　--%>
+
+					<%--<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>--%>
+
+					<%--等待发货--%>
+					<%--<a href="javascript:alert('已确认收货！');">确认收货</a>--%>
+					<%--订单结束--%>
+		<%--</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+
+
+	<%--<tr bgcolor="gray" bordercolor="gray">--%>
+		<%--<td colspan="6">--%>
+			<%--订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　--%>
+
+					<%--<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>--%>
+
+					<%--等待发货--%>
+					<%--<a href="javascript:alert('已确认收货！');">确认收货</a>--%>
+					<%--订单结束--%>
+		<%--</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bgcolor="gray" bordercolor="gray">--%>
+		<%--<td colspan="6">--%>
+			<%--订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　--%>
+
+					<%--<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>--%>
+
+					<%--等待发货--%>
+					<%--<a href="javascript:alert('已确认收货！');">确认收货</a>--%>
+					<%--订单结束--%>
+		<%--</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bgcolor="gray" bordercolor="gray">--%>
+		<%--<td colspan="6">--%>
+			<%--订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　--%>
+
+					<%--<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>--%>
+
+					<%--等待发货--%>
+					<%--<a href="javascript:alert('已确认收货！');">确认收货</a>--%>
+					<%--订单结束--%>
+		<%--</td>--%>
+	<%--</tr>--%>
+
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
+	<%--<tr bordercolor="gray" align="center">--%>
+		<%--<td width="15%">--%>
+			<%--<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>--%>
+		<%--</td>--%>
+		<%--<td>书名：Java详解</td>--%>
+		<%--<td>单价：39.9元</td>--%>
+		<%--<td>作者：张孝祥</td>--%>
+		<%--<td>数量：2</td>--%>
+		<%--<td>小计：79.8元</td>--%>
+	<%--</tr>--%>
 
 </table>
   </body>

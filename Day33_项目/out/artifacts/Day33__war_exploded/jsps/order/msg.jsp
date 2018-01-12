@@ -19,10 +19,10 @@
   </head>
   
   <body>
-<h1>${msg }</h1>
+<h1>${msg}</h1>
 <ul>
-<c:forEach items="${links }" var="link">
-  <li>${link }</li>
+<c:forEach items="${links}" var="link">
+  <li>${link}</li>
 </c:forEach>
 </ul>
   </body>
