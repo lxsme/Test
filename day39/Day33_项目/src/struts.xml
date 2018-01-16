@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.extension" value="action,"/>
+    <package name="day33" extends="struts-default" >
+    <action name="register" class="com.lanou.bookstore.user.web.UserAction" method="register">
+        <result name="success">/jsps/user/login.jsp</result>
+        <result name="error">/jsps/msg.jsp</result>
+
+    </action>
+
+        <action name="login" class="com.lanou.bookstore.user.web.UserAction" method="login">
+            <result name="success">index.jsp</result>
+            <result name="error">/jsps/user/login.jsp</result>
+        </action>
+
+        <action name="active" class="com.lanou.bookstore.user.web.UserAction" method="active">
+            <result name="success">/jsps/msg.jsp</result>
+        </action>
+
+        <action name="quit" class="com.lanou.bookstore.user.web.UserAction" method="quit">
+            <result name="success">/adminjsps/login.jsp</result>
+            <result name="error">/jsps/user/login.jsp</result>
+        </action>
+
+        <action name="category" class="com.lanou.bookstore.category.web.CategoryAction" method="show">
+            <result name="success">/jsps/left.jsp</result>
+
+        </action>
+</package>
+
+
+
+
+</struts>

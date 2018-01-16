@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<default-config>
+		<!--位置端口号,以及数据库名称-->
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/bookstore</property>
+		<!--注册驱动-->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<!--数据库用户名-->
+		<property name="user">root</property>
+		<!--数据库用户密码-->
+		<property name="password">123</property>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement">3</property>
+		<!--配置数据库连接池的初始连接数-->
+		<property name="initialPoolSize">5</property>
+		<!--配置数据库连接池的最小连接数-->
+		<property name="minPoolSize">2</property>
+		<!--配置数据库连接池的最大连接数-->
+		<property name="maxPoolSize">8</property>
+	</default-config>
+</c3p0-config>
